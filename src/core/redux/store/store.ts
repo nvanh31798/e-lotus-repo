@@ -1,19 +1,18 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import productReducer from "../slices/product/productSlice";
+import movieReducer from "../slices/movie/movieSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 const preloadedState = {
-  product: undefined,
+  movie: undefined,
 };
 
 const rootReducer = combineReducers({
-  product: productReducer,
+  movie: movieReducer,
 });
 
 export function setupStore(preloadedState?: Partial<RootState>) {
   return configureStore({
     reducer: rootReducer,
-    // preloadedState,
   });
 }
 

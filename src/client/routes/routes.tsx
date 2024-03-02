@@ -3,6 +3,7 @@ import App from "../../App";
 import { MovieList } from "../features/MovieList/MovieList";
 import { Path } from "./Path";
 import { ErrorPage } from "../pages/ErrorPage/ErrorPage";
+import { NowPlayingMovie } from "../features/NowPlayingMovie/NowPlayingMovie";
 
 export const generateRoutes = () => {
   const router = createBrowserRouter([
@@ -18,7 +19,7 @@ export const generateRoutes = () => {
         },
         {
           path: Path.NOW_PLAYING_MOVIE,
-          element: <MovieList label={"Now playing"} />,
+          element: <NowPlayingMovie />,
           errorElement: <ErrorPage />,
         },
         {

@@ -1,1 +1,1 @@
-export * from "./product/productAsynThunk";
+export * from "./movie/movieAsyncThunk";

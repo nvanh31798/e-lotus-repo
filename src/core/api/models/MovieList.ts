@@ -1,13 +1,25 @@
 export interface Movie {
-  }
-  
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
 export interface QueryMovieRequest {
-    skip?: number;
-    limit?: number;
-  }
-  
-export interface SearchMovieRequest {
-    skip?: number;
-    limit?: number;
-  }
-  
+  page?: number;
+  language?: string;
+}
+
+export interface QueryMovieResponse {
+  movies: Movie[];
+}
