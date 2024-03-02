@@ -5,8 +5,6 @@ import {
 } from "../../../core/redux/store/store";
 import { searchProducts } from "../../../core/redux/thunks";
 import { setSearchValue } from "../../../core/redux/slices";
-import SearchIcon from "@mui/icons-material/Search";
-import TextField from "@mui/material/TextField";
 
 export const SearchBar = () => {
   const dispatch = useAppDispatch();
@@ -42,15 +40,8 @@ export const SearchBar = () => {
   }, [searchString, IsDebounce, currentSearchValue]);
 
   return (
-    <div className="py-2">
-      <div className="">
-        <SearchIcon fontSize="large" className="mx-1 my-2 align-text-middle" />
-        <TextField
-          className="w-25"
-          onChange={(e) => handleSearching(e.target.value)}
-          placeholder="Searching..."
-        ></TextField>
-      </div>
+    <div>
+      <div></div>
     </div>
   );
 };

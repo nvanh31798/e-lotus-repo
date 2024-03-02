@@ -13,28 +13,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-.gallary {
-  justify-content: "center";
-}
-
-.image-gallery {
-  /* width: 20%; */
-  height: auto;
-}
-
-.card-sizing{
-  width: 350px;
-  height: 650px;
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.hide-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}

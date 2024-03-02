@@ -1,17 +1,15 @@
-import "./App.css";
+import { Outlet } from "react-router-dom";
+import "./App.scss";
 import { SearchBar } from "./client/common-components/SearchBar/SearchBar";
-import { ProductList } from "./client/features/product/component/ProductList";
+import { TabBar } from "./client/common-components/TabBar/TabBar";
 
 function App() {
   return (
     <div>
-      <div className="bg-secondary p-5 mb-5">
-        <h1>Burning bros interview test</h1>
-      </div>
-      <div>
-        <SearchBar />
-        <ProductList />
-      </div>
+      <h1>ELotus interview test</h1>
+      <TabBar />
+      <SearchBar />
+      <Outlet />
     </div>
   );
 }
