@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "plugins": [
+            {
+                "name": "typescript-plugin-css-modules",
+                "options": {
+                    "dotenvOptions": {
+                        "path": "./env-files/.env.sass-path"
+                    }
+                }
+            }
+        ]
+    }
+}

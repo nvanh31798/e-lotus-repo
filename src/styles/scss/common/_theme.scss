@@ -1,0 +1,96 @@
+$-themes: (
+    light: (
+        primary: #fd472c,
+        primary800: #fd614a,
+        primary700: #fe7c68,
+        primary600: #feb5ab,
+        primary500: #fecac3,
+        primary400: #ffedea,
+        primary300: #ffe5e1,
+        fontPrimary: #333333,
+        gray700: #525252,
+        gray500: #737373,
+        gray300: #d4d4d4,
+        gray200: #f5f5f5,
+        gray100: #fbfbfb,
+        appWhite: #ffffff,
+        appBlack: #333333,
+        success: #6fcf97,
+        successBackground: #f0f6f3,
+        successText: #333333,
+        warning: #ffc42d,
+        warningBackground: #fffbf2,
+        warningText: #333333,
+        danger: #f5113a,
+        dangerBackground: #ffe8ec,
+        dangerText: #f5113a,
+        info: #50bed7,
+        infoBackground: #e9f4ff,
+        infoText: #118eff,
+
+        hoverBackground: #efefef,
+        selectBackground: #fff6f4,
+        text: #333333,
+        paragraph: #4f4f4f,
+        tagBackground: #d8d8d8,
+    ),
+    dark: (
+        primary: #fd472c,
+        primary800: #fd614a,
+        primary700: #fe7c68,
+        primary600: #feb5ab,
+        primary500: #fecac3,
+        primary400: #ffedea,
+        primary300: #ffe5e1,
+        fontPrimary: #333333,
+        gray700: #525252,
+        gray500: #737373,
+        gray300: #d4d4d4,
+        gray200: #f5f5f5,
+        gray100: #fbfbfb,
+        appWhite: #ffffff,
+        appBlack: #333333,
+        success: #6fcf97,
+        successBackground: #f0f6f3,
+        successText: #333333,
+        warning: #ffc42d,
+        warningBackground: #fffbf2,
+        warningText: #333333,
+        danger: #f5113a,
+        dangerBackground: #ffe8ec,
+        dangerText: #f5113a,
+        info: #50bed7,
+        infoBackground: #e9f4ff,
+        infoText: #118eff,
+
+        hoverBackground: #efefef,
+        selectBackground: #fff6f4,
+        text: #333333,
+        paragraph: #4f4f4f,
+        tagBackground: #d8d8d8,
+    ),
+);
+
+@mixin themed() {
+    @each $theme-name, $theme-color-map in $-themes {
+        :global(.theme-#{$theme-name}) & {
+            $app-theme-map: () !global;
+            @each $key, $-color in $theme-color-map {
+                $value: map-get(map-get($-themes, $theme-name), '#{$key}');
+                $app-theme-map: map-merge(
+                    $app-theme-map,
+                    (
+                        $key: $value,
+                    )
+                ) !global;
+            }
+
+            @content;
+            $app-theme-map: null !global;
+        }
+    }
+}
+
+@function getThemedValue($key) {
+    @return map-get($app-theme-map, $key);
+}

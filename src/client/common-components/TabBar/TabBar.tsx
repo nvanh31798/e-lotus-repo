@@ -8,7 +8,7 @@ export const TabBar = () => {
       <nav>
         <ul>
           <li>
-            <Link to={Path.NOW_PLAYING_MOVIE}>Playing Movie</Link>
+            <Link to={Path.NOW_PLAYING_MOVIE}>Now Playing Movie</Link>
           </li>
           <li>
             <Link to={Path.TOP_RATED_MOVIE}>Top rated Moview</Link>

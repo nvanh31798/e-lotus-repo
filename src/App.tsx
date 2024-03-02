@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import "./App.scss";
+import './styles/scss/style.scss';
 import { SearchBar } from "./client/common-components/SearchBar/SearchBar";
 import { TabBar } from "./client/common-components/TabBar/TabBar";
 

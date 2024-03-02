@@ -1,0 +1,30 @@
+@mixin overflowY {
+    overflow-y: auto;
+
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@mixin textEllipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+@mixin textOverflowWrap {
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+@mixin hideScrollBar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+}

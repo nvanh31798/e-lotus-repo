@@ -1,0 +1,64 @@
+@use 'fonts';
+@use 'colors';
+@use 'theme' as *;
+@use 'animations';
+
+%baseButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 48px;
+    border-radius: 4px;
+    transition: animations.$default-transition;
+}
+
+@mixin -primaryButton {
+    @extend %baseButton;
+    @include fonts.app-fonts(buttonText);
+    @include themed() {
+        background-color: getThemedValue(primary);
+        color: getThemedValue(appWhite);
+    }
+}
+
+@mixin -secondaryButton {
+    @extend %baseButton;
+    @include fonts.app-fonts(buttonText);
+    @include themed() {
+        color: getThemedValue(primary);
+    }
+    background-color: transparent;
+}
+
+@mixin -documentActionBarButton {
+    @extend %baseButton;
+    @include fonts.app-fonts(label);
+    @include themed() {
+        color: getThemedValue(appBlack);
+    }
+    background-color: transparent;
+    padding: 8px 15px;
+}
+
+@mixin -chipButton {
+    @extend %baseButton;
+    @include fonts.app-fonts(paragraph);
+    @include themed() {
+        color: getThemedValue(appWhite);
+    }
+    background-color: transparent;
+    padding: 2px 10px;
+}
+
+@mixin app-buttons($buttonType) {
+    @if $buttonType == secondary {
+        @include -secondaryButton();
+    } @else if $buttonType == primary {
+        @include -primaryButton();
+    } @else if $buttonType == documentActionBarButton {
+        @include -documentActionBarButton();
+    } @else if $buttonType == chipButton {
+        @include -chipButton();
+    }
+}

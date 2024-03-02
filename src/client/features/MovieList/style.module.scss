@@ -1,0 +1,5 @@
+@use 'common';
+
+.movieListContainer {
+    background-color: common.app-colors(primary);
+}

@@ -1,0 +1,105 @@
+@use 'colors';
+
+@mixin -common {
+    font-feature-settings: 'lnum';
+    -moz-font-feature-settings: 'lnum';
+    -webkit-font-feature-settings: 'lnum';
+    font-family: 'Raleway';
+}
+
+@mixin -h1 {
+    @include -common();
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+@mixin -h2 {
+    @include -common();
+    font-weight: 700;
+    font-size: 18.5px;
+    line-height: 150%;
+}
+
+@mixin -h3 {
+    @include -common();
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%;
+}
+
+@mixin -h4 {
+    @include -common();
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 150%;
+}
+
+@mixin -h5 {
+    @include -common();
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+}
+
+@mixin -paragraph {
+    @include -common();
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+}
+
+@mixin -buttonText {
+    @include -common();
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
+}
+
+@mixin -link {
+    @include -common();
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    color: colors.app-colors(primary);
+    cursor: pointer;
+}
+
+@mixin -smallText {
+    @include -common();
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 150%;
+}
+
+@mixin -label {
+    @include -common();
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+}
+
+@mixin app-fonts($appFonts) {
+    @if $appFonts == h1 {
+        @include -h1();
+    } @else if $appFonts == h2 {
+        @include -h2();
+    } @else if $appFonts == h3 {
+        @include -h3();
+    } @else if $appFonts == h4 {
+        @include -h4();
+    } @else if $appFonts == h5 {
+        @include -h5();
+    } @else if $appFonts == paragraph {
+        @include -paragraph();
+    } @else if $appFonts == buttonText {
+        @include -buttonText();
+    } @else if $appFonts == link {
+        @include -link();
+    } @else if $appFonts == smallText {
+        @include -smallText();
+    } @else if $appFonts == label {
+        @include -label();
+    }
+}

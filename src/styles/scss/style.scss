@@ -1,0 +1,79 @@
+@use 'common';
+
+$fontNameMain: 'Raleway';
+$fontWeights: (
+    'Thin': 100,
+    'ExtraLight': 200,
+    'Light': 300,
+    'Regular': 400,
+    'Medium': 500,
+    'SemiBold': 600,
+    'Bold': 700,
+    'ExtraBold': 800,
+    'Black': 900,
+);
+
+body {
+    font-family: $fontNameMain;
+    color: common.app-colors(appBlack);
+    &::-webkit-scrollbar {
+        width: 0px;
+    }
+}
+
+/**
+Special styling.
+**/
+input {
+    accent-color: common.app-colors(primary);
+}
+
+input:focus {
+    outline: none;
+}
+
+#root {
+    max-height: 100vh;
+}
+
+[data-focusvisible-polyfill] {
+    outline: 1px solid #333333;
+}
+
+body a[data-focusvisible-polyfill] {
+    border: 1px solid #333333;
+}
+
+.react-pdf__Page a:focus-visible,
+div:focus-visible,
+a:focus-visible,
+:focus-visible {
+    outline: 1px solid #333333;
+}
+
+/**
+End special styling.
+**/
+
+/**
+Start app scroll bar
+**/
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: common.app-colors(gray300);
+    opacity: 0.1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: common.app-colors(gray500);
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+}
+
+/**
+End app scroll bar
+**/

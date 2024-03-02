@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../../App";
-import { ErrorPage } from "../common-components/ErrorPage/ErrorPage";
 import { MovieList } from "../features/MovieList/MovieList";
 import { Path } from "./Path";
+import { ErrorPage } from "../pages/ErrorPage/ErrorPage";
 
 export const generateRoutes = () => {
   const router = createBrowserRouter([

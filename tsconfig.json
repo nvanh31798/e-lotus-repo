@@ -1,4 +1,5 @@
 {
+  "extends": "./paths.json",
   "compilerOptions": {
     "target": "es5",
     "lib": [
@@ -7,6 +8,8 @@
       "esnext",
       "ES6",
     ],
+    "module": "esnext",
+    "moduleResolution": "node",
     "outDir": "./dist/",
     "noImplicitAny": true,
     "allowJs": true,
@@ -15,17 +18,15 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "sourceMap": true,
-    "types": ["webrtc", "node"],
+    "types": ["node"],
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "strictFunctionTypes": false,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "removeComments": false,
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src/**/*"],
 }

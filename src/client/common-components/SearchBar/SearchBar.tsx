@@ -41,7 +41,7 @@ export const SearchBar = () => {
 
   return (
     <div>
-      <div></div>
+      <input placeholder="Search" type="text" />
     </div>
   );
 };
