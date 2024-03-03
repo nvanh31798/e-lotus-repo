@@ -12,16 +12,16 @@ The following **required** functionality is completed:
 
 - [x] User can view a list of movies currently playing in theaters. Poster images load asynchronously.
 - [x] Add a tab bar for **Now Playing** and **Top Rated** movies.
-- [ ] Add a search bar.
-- [ ] User can view movie details by tapping on a cell.
+- [x] Add a search bar.
+- [x] User can view movie details by tapping on a cell.
 - [x] User sees loading state while waiting for the API.
-- [ ] User sees an error message when there is a network error.
+- [x] User sees an error message when there is a network error.
 - [x] Simple responsive.
 
 The following **optional** features are implemented:
 
 - [ ] Implement segmented control to switch between list view and grid view.
-- [ ] All images fade in.
+- [x] All images fade in.
 - [x] Implement lazy load image.
 - [ ] Customize the highlight and selection effect of the cell.
 - [ ] Improve UX loading by skeleton loading.
@@ -42,7 +42,7 @@ The following **optional** features are implemented:
 ### 1. Library included
 | Library                         | version | Description                                        |
 |---------------------------------|---------|----------------------------------------------------|
-| customize-cra                     | 5.15.6 | custom craete react app                               |
+| customize-cra                     |^1.0.0 | custom craete react app                               |
 | redux                           | 5.0.1 | State management                                   |
 | react-app-rewired               | 2.2.1 | Start react app with override config opionÏ        |
 | cypress                             |13.6.3  | Supporting E2E, integration testing                |
@@ -75,4 +75,3 @@ Currently, cypress is not fully config.
 | REACT_APP_USING_MOCK                     | false                     | TBD   |
 | REACT_APP_BASE_URL                           | https://localhost:3006    | TBD   |
 | REACT_APP_PORT | 3006                          | TBD   |
-| REACT_APP_PRODUCT_SERVICE | https://dummyjson.com/products | TBD   |
