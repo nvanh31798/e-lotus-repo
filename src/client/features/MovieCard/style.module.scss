@@ -3,8 +3,8 @@
 .cardContainer{
     overflow: hidden !important;
     border-radius: 10px;
-    height: 700px;
-    width: 400px;
+    height: 400px;
+    width: 350px;
     margin-top: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -15,7 +15,7 @@ cardContainer:hover{
 
 .imageContainer {
     // background-color: common.app-colors(primary);
-    max-height: 600px;
+    max-height: 300px;
     overflow: hidden !important;
 
 }
@@ -67,3 +67,21 @@ cardContainer:hover{
     padding:10px;
     max-height: 65px;
 }
+
+  @media only screen and (min-width:961px)  {
+    .imageContainer {
+        // background-color: common.app-colors(primary);
+        max-height: 600px;
+        overflow: hidden !important;
+    
+    }
+
+    .cardContainer{
+        overflow: hidden !important;
+        border-radius: 10px;
+        height: 700px;
+        width: 400px;
+        margin-top: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+   }
