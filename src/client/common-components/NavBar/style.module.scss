@@ -1,0 +1,12 @@
+@use 'common';
+
+.container{
+    background-color: common.app-colors(primary);
+    max-height: 200px; 
+    padding: 10px;
+}
+
+.menuContainer{
+    background-color: common.app-colors(secondary);
+}
+

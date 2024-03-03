@@ -22,4 +22,5 @@ export interface QueryMovieRequest {
 
 export interface QueryMovieResponse {
   movies: Movie[];
+  totalPages: number;
 }

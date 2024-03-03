@@ -4,22 +4,23 @@ import styles from "./style.module.scss";
 import {
   ActionStatusEnum,
   getNowPlayingMovies,
+  getTopRatedMovies,
   useAppDispatch,
   useAppSelector,
 } from "../../../core";
 
-export const NowPlayingMovie = () => {
+export const TopRatedMovie = () => {
   const dispatch = useAppDispatch();
   const { movieList, totalPage, loadingStatus } = useAppSelector(
     (state) => state.movie
   );
 
   useEffect(() => {
-    dispatch(getNowPlayingMovies({ page: 1 }));
+    dispatch(getTopRatedMovies({ page: 1 }));
   }, []);
 
   const handlePageChange = (page: number) => {
-    dispatch(getNowPlayingMovies({ page: page }));
+    dispatch(getTopRatedMovies({ page: page }));
   };
 
   return (
@@ -27,7 +28,7 @@ export const NowPlayingMovie = () => {
       <MovieList
         onPageChanged={handlePageChange}
         movieList={movieList}
-        label="Now Playing"
+        label="Top Rated Movie"
         totalPage={totalPage}
         isLoading={loadingStatus === ActionStatusEnum.Pending}
       />

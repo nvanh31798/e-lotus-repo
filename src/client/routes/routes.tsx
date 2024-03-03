@@ -4,6 +4,8 @@ import { MovieList } from "../features/MovieList/MovieList";
 import { Path } from "./Path";
 import { ErrorPage } from "../pages/ErrorPage/ErrorPage";
 import { NowPlayingMovie } from "../features/NowPlayingMovie/NowPlayingMovie";
+import { MovieDetail } from "../features/MovieDetail/MovieDetail";
+import { TopRatedMovie } from "../features/TopRatedMovie/TopRatedMovie";
 
 export const generateRoutes = () => {
   const router = createBrowserRouter([
@@ -14,7 +16,7 @@ export const generateRoutes = () => {
       children: [
         {
           path: "/",
-          element: <MovieList label={"Now playing"} />,
+          element: <NowPlayingMovie />,
           errorElement: <ErrorPage />,
         },
         {
@@ -24,7 +26,12 @@ export const generateRoutes = () => {
         },
         {
           path: Path.TOP_RATED_MOVIE,
-          element: <MovieList label={"Top rated"} />,
+          element: <TopRatedMovie />,
+          errorElement: <ErrorPage />,
+        },
+        {
+          path: `${Path.MOVIE_DETAILS}/:movieId`,
+          element: <MovieDetail />,
           errorElement: <ErrorPage />,
         },
       ],

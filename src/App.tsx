@@ -1,17 +1,15 @@
 import { Outlet } from "react-router-dom";
 import "./App.scss";
-import './styles/scss/style.scss';
-import { SearchBar } from "./client/common-components/SearchBar/SearchBar";
-import { TabBar } from "./client/common-components/TabBar/TabBar";
+import "./styles/scss/style.scss";
+import AppContainer from "./client/entry/AppContainer";
+import { NavBar } from "./client/common-components/NavBar/NavBar";
 
 function App() {
   return (
-    <div>
-      <h1>ELotus interview test</h1>
-      <TabBar />
-      <SearchBar />
+    <AppContainer>
+      <NavBar />
       <Outlet />
-    </div>
+    </AppContainer>
   );
 }
 

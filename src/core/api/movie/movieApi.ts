@@ -25,7 +25,25 @@ export const MovieApi = () => {
     );
   };
 
+  const getTopRatedMovies = async (requestParams: QueryMovieRequest) => {
+    const requestParamURI = `top_rated`;
+    const languageURI = `language=${requestParams.language ?? defaultLang}`;
+    const pageURI = `page=${requestParams.page ?? defaultPage}`;
+
+    return await fetch(
+      `${MOVIE_SERVICE_URL}/${requestParamURI}?${languageURI}&${pageURI}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          AUTHORIZATION: "Bearer " + MOVIE_SERVICE_ACCESS_TOKEN,
+        },
+      }
+    );
+  };
+
   return {
     getNowPlayingMovies: getNowPlayingMovies,
+    getTopRatedMovies: getTopRatedMovies,
   };
 };

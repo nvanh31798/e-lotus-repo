@@ -1,5 +1,12 @@
 @use 'common';
 
 .movieListContainer {
-    background-color: common.app-colors(primary);
+    padding: 10px;
+}
+
+.movieListGrid {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: auto auto auto auto;
+    column-gap: 20px;
 }

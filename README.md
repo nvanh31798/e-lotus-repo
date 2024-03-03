@@ -1,18 +1,32 @@
 # Documentation
 
-## Description
-This project build on top of the requirement of burning bros requirement, which can be found [here](https://dabivn.notion.site/Coding-Project-Infinite-Scrolling-and-Searchable-Product-List-e269e607507d4e43ac0c50603f74897b) .
+# Project - *Movies*
 
-#### To sum up, it contains 2 main feature:
-* Display product
-  * Each time the user scrolls to the end of the list, fetch the next 20 products.
-  * Display the list of products with relevant information (e.g., name, price, image).
-* Search product
-  * Implement an input for searching product name.
-    Whenever user typing, fetch data and update the product list.
-  * Products data should be deserialized after fetched from api.
+**Movies** is a movies app using the [The Movie Database API](https://developers.themoviedb.org/3).
 
-API: [open link](https://dummyjson.com/docs/products)
+- Total time: 48 hours
+
+## User Stories
+
+The following **required** functionality is completed:
+
+- [x] User can view a list of movies currently playing in theaters. Poster images load asynchronously.
+- [x] Add a tab bar for **Now Playing** and **Top Rated** movies.
+- [ ] Add a search bar.
+- [ ] User can view movie details by tapping on a cell.
+- [x] User sees loading state while waiting for the API.
+- [ ] User sees an error message when there is a network error.
+- [ ] Simple responsive.
+
+The following **optional** features are implemented:
+
+- [ ] Implement segmented control to switch between list view and grid view.
+- [ ] All images fade in.
+- [x] Implement lazy load image.
+- [ ] Customize the highlight and selection effect of the cell.
+- [ ] Improve UX loading by skeleton loading.
+- [ ] Enhance responsive.
+
 ***
 ## How to start the project
 ### Pre-requirement:
@@ -28,11 +42,8 @@ API: [open link](https://dummyjson.com/docs/products)
 ### 1. Library included
 | Library                         | version | Description                                        |
 |---------------------------------|---------|----------------------------------------------------|
-| material-ui                     | 5.15.6 | UI component library                               |
+| customize-cra                     | 5.15.6 | custom craete react app                               |
 | redux                           | 5.0.1 | State management                                   |
-| react-infinite-scroll-component | 6.1.0 | Should allow multiple lines input. Default "false" |
-| bootstrap                       | 5.3.2 | bootstrap                                          |
-| react-image-gallery             | 1.2.4 | Image gallary handle                               |
 | react-app-rewired               | 2.2.1 | Start react app with override config opionÏ        |
 | cypress                             |13.6.3  | Supporting E2E, integration testing                |
 
@@ -57,22 +68,7 @@ root
 Currently, cypress is not fully config.
   * open cypress UI using `npm cypress:open`
   
-### 3. Components
-* #### ProductList
-  This component responsible to render list of products.
-  
-* #### ProductItem
-
-    This component responsible to render products information (etc: name, price .).
-
-*Table of definitions*
-
-| props                    | tpye       | description         |
-|--------------------------|------------|---------------------|
-| product                  | Product    | product information |
-| testId                   | TestIdEnum | Testing purpose     |
-
-### 4. Environment
+### 3. Environment
 
 | Variable                        | DEV                       | OTHER |
 |---------------------------------|---------------------------|-------|
