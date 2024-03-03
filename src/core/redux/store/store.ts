@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import movieReducer from "../slices/movie/movieSlice";
+import toastReducer from "../slices/toast/toastSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 const preloadedState = {
@@ -8,6 +9,7 @@ const preloadedState = {
 
 const rootReducer = combineReducers({
   movie: movieReducer,
+  toast: toastReducer,
 });
 
 export function setupStore(preloadedState?: Partial<RootState>) {

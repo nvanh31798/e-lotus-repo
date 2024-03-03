@@ -1,41 +1,95 @@
 import React, { useEffect } from "react";
-import { getMovieDetail, useAppDispatch, useAppSelector } from "../../..//core";
+import {
+  ActionStatusEnum,
+  getMovieDetail,
+  useAppDispatch,
+  useAppSelector,
+} from "../../..//core";
 import { useParams } from "react-router-dom";
 import { getImageURL } from "../../../client/helper/imageHelper";
 import styles from "./style.module.scss";
+import { LoadingIndicator } from "../../../client/common-components/LoadingIdicator/LoadingIdicator";
 
 export const MovieDetail = () => {
   const { movieId } = useParams();
-  const movieDetail = useAppSelector((state) => state.movie.movieDetails);
+  const { movieDetails, detailLoadingStatus } = useAppSelector(
+    (state) => state.movie
+  );
   const dispatch = useAppDispatch();
 
-  console.log("movieDetail", movieDetail);
   useEffect(() => {
-    dispatch(getMovieDetail({ id: movieId ?? "" }));
-  }, []);
+    if (!movieId) {
+      return;
+    }
+    dispatch(getMovieDetail({ id: movieId }));
+  }, [movieId]);
+
+  if (
+    detailLoadingStatus === ActionStatusEnum.Pending ||
+    parseInt(movieId ?? "") !== movieDetails?.id
+  ) {
+    return (
+      <div className={styles.container}>
+        <LoadingIndicator />
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>
-      <div>
+      <div className={styles.imageContainer}>
         <img
-          src={getImageURL("original", movieDetail?.backdrop_path ?? "")}
+          className={styles.image}
+          src={getImageURL("original", movieDetails?.backdrop_path ?? "")}
           loading="lazy"
-          alt=""
+          alt={movieDetails?.original_title}
         />
       </div>
-      {movieDetail?.title}
-      <div>
-        <p>{movieDetail?.budget}</p>
-        <p>{movieDetail?.homepage}</p>
-        <p>{movieDetail?.status}</p>
-        <p>{movieDetail?.vote_average}</p>
-        <p>{movieDetail?.vote_count}</p>
-        <p>{movieDetail?.revenue}</p>
-        <p>{movieDetail?.genres[0].name}</p>
-        <p>{movieDetail?.genres[1].name}</p>
-        <p>{movieDetail?.overview}</p>
-        <p>{movieDetail?.original_title}</p>
-        <p>{movieDetail?.original_language}</p>
+
+      <div className={styles.contentContainer}>
+        <div className={styles.posterContainer}>
+          <a href={movieDetails?.homepage}>
+            <img
+              src={getImageURL("200", movieDetails?.poster_path ?? "")}
+              loading="lazy"
+              alt={movieDetails?.original_title}
+            />
+          </a>
+        </div>
+        <div className={styles.contentWrapper}>
+          <div className={styles.textWrapper}>
+            <div>
+              <p className={styles.title}>
+                {`${movieDetails?.title}`}
+                {" ( "}
+                {movieDetails?.genres.map((genre) => (
+                  <span>{genre.name} </span>
+                ))}
+                {")"}
+                <span> {movieDetails?.status}</span>
+              </p>
+              <p>
+                <strong>Budget:</strong> ${movieDetails?.budget.toLocaleString('en-US',{currency: 'USD'})}
+              </p>
+              <p>
+                <strong>Revenue:</strong> ${movieDetails?.revenue.toLocaleString('en-US',{currency: 'USD'})}
+              </p>
+              <p>
+                <strong>Language:</strong> {movieDetails?.original_language}
+              </p>
+              <p className={styles.chipText}>
+                <strong>Rating: </strong> 
+                <span className={styles.ratingText}>{`${
+                  Math.round(movieDetails?.vote_average * 100) / 100
+                }/10`}</span>
+                {` (${movieDetails?.vote_count} votes)`}
+              </p>
+            </div>
+            <div className={styles.description}>
+              <p>{movieDetails?.overview}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

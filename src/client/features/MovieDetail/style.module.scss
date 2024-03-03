@@ -2,7 +2,71 @@
 
 .container {
     // background-color: common.app-colors(primary);
-    padding: 20px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
     padding-top: 0;
     display: grid;
+    display: flex;
+    height: 500px;
+    overflow: hidden;
+    background-color: common.app-colors(primary400);
+
+}
+
+.imageContainer{
+    max-width: 100%;
+    position: absolute;
+    overflow: hidden;
+    opacity: 0.6;
+    max-height: 500px;
+}
+
+.contentContainer{
+    margin: auto;
+    display: flex;
+    width: 1000px;
+    height: 300px;
+    z-index: 1;
+    padding: 10px;
+    background-color: common.app-colors(primary300);
+}
+
+.posterContainer{
+    align-self: center;
+    padding: 5px;
+    background-color: common.app-colors(primary500);
+}
+
+.posterContainer:hover{
+    cursor: pointer;
+}
+
+.contentWrapper{
+    padding-left: 10px;
+    max-height: 300px;
+}
+
+p{
+    margin: 10px;
+}
+.title{
+    font-size: larger;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.title > span{
+    font-size: medium;
+    font-weight: 400;
+}
+
+.textWrapper{
+    display: flex;
+}
+
+.description{
+    max-width: 500px;
+    text-align: justify;
+    color: common.app-colors(paragraph);
 }

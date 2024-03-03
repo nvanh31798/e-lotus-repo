@@ -1,0 +1,16 @@
+@use 'common';
+
+.container {
+    left: 20px;
+    bottom: 20px;
+    background-color: common.app-colors(danger);
+    position: sticky;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 400px;
+    height: 40px;
+    color: common.app-colors(appWhite);
+
+}

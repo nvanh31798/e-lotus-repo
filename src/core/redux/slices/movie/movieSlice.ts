@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
 import { ActionStatusEnum } from "../../models/ActionStatusEnum";
-import { getMovieDetail, getNowPlayingMovies, getTopRatedMovies } from "../../thunks";
+import {
+  getMovieDetail,
+  getNowPlayingMovies,
+  getTopRatedMovies,
+} from "../../thunks";
 import { Movie, MovieDetails } from "src/core/api/models/MovieList";
 
 export interface MovieState {
@@ -43,7 +46,7 @@ export const movieSlice = createSlice({
     builder.addCase(getNowPlayingMovies.pending, (state) => {
       state.loadingStatus = ActionStatusEnum.Pending;
     });
-    builder.addCase(getNowPlayingMovies.rejected, (state, action) => {
+    builder.addCase(getNowPlayingMovies.rejected, (state) => {
       state.loadingStatus = ActionStatusEnum.Failed;
     });
     builder.addCase(getTopRatedMovies.fulfilled, (state, action) => {
@@ -54,7 +57,7 @@ export const movieSlice = createSlice({
     builder.addCase(getTopRatedMovies.pending, (state) => {
       state.loadingStatus = ActionStatusEnum.Pending;
     });
-    builder.addCase(getTopRatedMovies.rejected, (state, action) => {
+    builder.addCase(getTopRatedMovies.rejected, (state) => {
       state.loadingStatus = ActionStatusEnum.Failed;
     });
 
@@ -65,7 +68,7 @@ export const movieSlice = createSlice({
     builder.addCase(getMovieDetail.pending, (state) => {
       state.detailLoadingStatus = ActionStatusEnum.Pending;
     });
-    builder.addCase(getMovieDetail.rejected, (state, action) => {
+    builder.addCase(getMovieDetail.rejected, (state) => {
       state.detailLoadingStatus = ActionStatusEnum.Failed;
     });
   },
