@@ -6,6 +6,7 @@ import { ErrorPage } from "../pages/ErrorPage/ErrorPage";
 import { NowPlayingMovie } from "../features/NowPlayingMovie/NowPlayingMovie";
 import { MovieDetail } from "../features/MovieDetail/MovieDetail";
 import { TopRatedMovie } from "../features/TopRatedMovie/TopRatedMovie";
+import { SearchMovies } from "../features/SearchMovies/SearchMovies";
 
 export const generateRoutes = () => {
   const router = createBrowserRouter([
@@ -27,6 +28,11 @@ export const generateRoutes = () => {
         {
           path: Path.TOP_RATED_MOVIE,
           element: <TopRatedMovie />,
+          errorElement: <ErrorPage />,
+        },
+        {
+          path: `${Path.SEARCH_MOVIES}/:queryString`,
+          element: <SearchMovies />,
           errorElement: <ErrorPage />,
         },
         {

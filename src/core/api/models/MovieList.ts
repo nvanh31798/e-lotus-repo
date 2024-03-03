@@ -70,6 +70,11 @@ export interface QueryMovieRequest {
   page?: number;
   language?: string;
 }
+export interface SearchMovieRequest {
+  queryString?: string;
+  page?: number;
+  language?: string;
+}
 
 export interface QueryMovieResponse {
   movies: Movie[];

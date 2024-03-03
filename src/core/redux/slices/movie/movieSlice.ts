@@ -4,6 +4,7 @@ import {
   getMovieDetail,
   getNowPlayingMovies,
   getTopRatedMovies,
+  searchMovie,
 } from "../../thunks";
 import { Movie, MovieDetails } from "src/core/api/models/MovieList";
 
@@ -70,6 +71,17 @@ export const movieSlice = createSlice({
     });
     builder.addCase(getMovieDetail.rejected, (state) => {
       state.detailLoadingStatus = ActionStatusEnum.Failed;
+    });
+    builder.addCase(searchMovie.fulfilled, (state, action) => {
+      state.movieList = action.payload.movies;
+      state.totalPage = action.payload.totalPages;
+      state.loadingStatus = ActionStatusEnum.Success;
+    });
+    builder.addCase(searchMovie.pending, (state) => {
+      state.loadingStatus = ActionStatusEnum.Pending;
+    });
+    builder.addCase(searchMovie.rejected, (state) => {
+      state.loadingStatus = ActionStatusEnum.Failed;
     });
   },
 });

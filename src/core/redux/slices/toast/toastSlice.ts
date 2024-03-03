@@ -4,6 +4,7 @@ import {
   getMovieDetail,
   getNowPlayingMovies,
   getTopRatedMovies,
+  searchMovie,
 } from "../../thunks";
 
 export interface ToastState {
@@ -48,6 +49,10 @@ export const toastSlice = createSlice({
     });
 
     builder.addCase(getMovieDetail.rejected, (state, action) => {
+      state.message = action.payload as string;
+      state.triggerToast = !state.triggerToast;
+    });
+    builder.addCase(searchMovie.rejected, (state, action) => {
       state.message = action.payload as string;
       state.triggerToast = !state.triggerToast;
     });

@@ -2,7 +2,11 @@ import {
   MOVIE_SERVICE_URL,
   MOVIE_SERVICE_ACCESS_TOKEN,
 } from "../../constant/constant";
-import { MovieDetailRequest, QueryMovieRequest } from "../models/MovieList";
+import {
+  MovieDetailRequest,
+  QueryMovieRequest,
+  SearchMovieRequest,
+} from "../models/MovieList";
 
 export const MovieApi = () => {
   const defaultLang = "en-US";
@@ -41,7 +45,7 @@ export const MovieApi = () => {
       }
     );
   };
-  
+
   const getMovieDetail = async (requestParams: MovieDetailRequest) => {
     const requestParamURI = requestParams.id;
     const languageURI = `language=${requestParams.language ?? defaultLang}`;
@@ -58,9 +62,27 @@ export const MovieApi = () => {
     );
   };
 
+  const searchMovie = async (requestParams: SearchMovieRequest) => {
+    const languageURI = `language=${defaultLang}`;
+    const pageURI = `page=${requestParams.page ?? defaultPage}`;
+    const queryURI = `query=${requestParams.queryString}`;
+
+    return await fetch(
+      `https://api.themoviedb.org/3/search/movie?${queryURI}&include_adult=false&${languageURI}&${pageURI}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          AUTHORIZATION: "Bearer " + MOVIE_SERVICE_ACCESS_TOKEN,
+        },
+      }
+    );
+  };
+
   return {
     getNowPlayingMovies: getNowPlayingMovies,
     getTopRatedMovies: getTopRatedMovies,
     getMovieDetail: getMovieDetail,
+    searchMovie: searchMovie,
   };
 };

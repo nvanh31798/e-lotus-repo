@@ -7,6 +7,7 @@ import {
   MovieDetails,
   QueryMovieRequest,
   QueryMovieResponse,
+  SearchMovieRequest,
 } from "src/core/api/models/MovieList";
 
 export const getNowPlayingMovies = createAsyncThunk<
@@ -91,6 +92,37 @@ export const getMovieDetail = createAsyncThunk<
       .json()
       .then((res) => {
         return res as MovieDetails;
+      })
+      .catch((error) => rejectWithValue("Invalid response" + error));
+  }
+);
+
+export const searchMovie = createAsyncThunk<
+  QueryMovieResponse,
+  SearchMovieRequest,
+  AsyncThunkConfig
+>(
+  "movies/searchMovie",
+  async (
+    { language = "en-US", queryString, page }: SearchMovieRequest,
+    { rejectWithValue }
+  ) => {
+    const response = await MovieApi().searchMovie({
+      page: page,
+      queryString: queryString,
+      language: language,
+    } as SearchMovieRequest);
+    if (response.status !== 200) {
+      return rejectWithValue("Invalid response status: " + response.status);
+    }
+
+    return await response
+      .json()
+      .then((res) => {
+        return {
+          movies: res.results as Movie[],
+          totalPages: res.total_pages as number,
+        };
       })
       .catch((error) => rejectWithValue("Invalid response" + error));
   }
