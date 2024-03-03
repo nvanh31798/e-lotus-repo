@@ -27,7 +27,7 @@ export const MovieCard = ({
 }: MovieCardProps) => {
   const navigate = useNavigate();
   const handleCardClick = () => {
-    navigate(`../${Path.MOVIE_DETAILS}/movieId=${movieId}`);
+    navigate(`../${Path.MOVIE_DETAILS}/${movieId}`);
   };
 
   if (isLoading) {

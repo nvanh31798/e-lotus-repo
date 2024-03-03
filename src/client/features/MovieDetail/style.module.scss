@@ -1,0 +1,8 @@
+@use 'common';
+
+.container {
+    // background-color: common.app-colors(primary);
+    padding: 20px;
+    padding-top: 0;
+    display: grid;
+}

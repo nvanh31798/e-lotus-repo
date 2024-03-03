@@ -1,7 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { MovieApi } from "../../../api";
 import { AsyncThunkConfig } from "@reduxjs/toolkit/dist/createAsyncThunk";
-import { Movie, QueryMovieRequest, QueryMovieResponse } from "src/core/api/models/MovieList";
+import {
+  Movie,
+  MovieDetailRequest,
+  MovieDetails,
+  QueryMovieRequest,
+  QueryMovieResponse,
+} from "src/core/api/models/MovieList";
 
 export const getNowPlayingMovies = createAsyncThunk<
   QueryMovieResponse,
@@ -58,6 +64,33 @@ export const getTopRatedMovies = createAsyncThunk<
           movies: res.results as Movie[],
           totalPages: res.total_pages as number,
         };
+      })
+      .catch((error) => rejectWithValue("Invalid response" + error));
+  }
+);
+
+export const getMovieDetail = createAsyncThunk<
+  MovieDetails,
+  MovieDetailRequest,
+  AsyncThunkConfig
+>(
+  "movies/getMovieDetail",
+  async (
+    { language = "en-US", id }: MovieDetailRequest,
+    { rejectWithValue }
+  ) => {
+    const response = await MovieApi().getMovieDetail({
+      id: id,
+      language: language,
+    } as MovieDetailRequest);
+    if (response.status !== 200) {
+      return rejectWithValue("Invalid response status: " + response.status);
+    }
+
+    return await response
+      .json()
+      .then((res) => {
+        return res as MovieDetails;
       })
       .catch((error) => rejectWithValue("Invalid response" + error));
   }

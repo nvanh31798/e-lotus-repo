@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { ActionStatusEnum } from "../../models/ActionStatusEnum";
-import { getNowPlayingMovies, getTopRatedMovies } from "../../thunks";
-import { Movie } from "src/core/api/models/MovieList";
+import { getMovieDetail, getNowPlayingMovies, getTopRatedMovies } from "../../thunks";
+import { Movie, MovieDetails } from "src/core/api/models/MovieList";
 
 export interface MovieState {
   loadingStatus: ActionStatusEnum;
+  detailLoadingStatus: ActionStatusEnum;
   totalPage: number;
   movieList: Movie[];
+  movieDetails?: MovieDetails;
 }
 
 const isUsingMock = process.env.REACT_APP_USING_MOCK;
@@ -16,6 +18,7 @@ const mockInitialProductState = {
   movieList: [],
   totalPage: 0,
   loadingStatus: ActionStatusEnum.Idle,
+  detailLoadingStatus: ActionStatusEnum.Idle,
 } as MovieState;
 
 const initialState: MovieState = isUsingMock
@@ -24,6 +27,7 @@ const initialState: MovieState = isUsingMock
       movieList: [],
       totalPage: 0,
       loadingStatus: ActionStatusEnum.Idle,
+      detailLoadingStatus: ActionStatusEnum.Idle,
     };
 
 export const movieSlice = createSlice({
@@ -52,6 +56,17 @@ export const movieSlice = createSlice({
     });
     builder.addCase(getTopRatedMovies.rejected, (state, action) => {
       state.loadingStatus = ActionStatusEnum.Failed;
+    });
+
+    builder.addCase(getMovieDetail.fulfilled, (state, action) => {
+      state.movieDetails = action.payload;
+      state.detailLoadingStatus = ActionStatusEnum.Success;
+    });
+    builder.addCase(getMovieDetail.pending, (state) => {
+      state.detailLoadingStatus = ActionStatusEnum.Pending;
+    });
+    builder.addCase(getMovieDetail.rejected, (state, action) => {
+      state.detailLoadingStatus = ActionStatusEnum.Failed;
     });
   },
 });

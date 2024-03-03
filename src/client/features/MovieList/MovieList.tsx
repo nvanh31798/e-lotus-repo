@@ -1,10 +1,10 @@
 import { Movie } from "src/core/api/models/MovieList";
 import styles from "./style.module.scss";
 import { MovieCard } from "../MovieCard/MovieCard";
-import { IMAGE_BASE_URL } from "../../../core";
 import { Pagination } from "../..//common-components/Pagination/Pagination";
 import { useState } from "react";
 import { LoadingIndicator } from "../../../client/common-components/LoadingIdicator/LoadingIdicator";
+import { getImageURL } from "../../../client/helper/imageHelper";
 
 export interface MovieListProps {
   label?: string;
@@ -22,10 +22,6 @@ export const MovieList = ({
   isLoading,
 }: MovieListProps) => {
   const [currentPage, setCurrentPage] = useState(1);
-
-  const getPosterImageURL = (posterPath: string): string => {
-    return `${IMAGE_BASE_URL}/w400${posterPath}`;
-  };
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -50,7 +46,7 @@ export const MovieList = ({
             movieDate={movie.release_date}
             movieId={movie.id}
             title={movie.title}
-            posterImageURL={getPosterImageURL(movie.poster_path)}
+            posterImageURL={getImageURL(movie.poster_path)}
             description={movie.overview}
             movieRate={movie.vote_average}
             totalRate={movie.vote_count}

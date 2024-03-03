@@ -2,7 +2,7 @@ import {
   MOVIE_SERVICE_URL,
   MOVIE_SERVICE_ACCESS_TOKEN,
 } from "../../constant/constant";
-import { QueryMovieRequest } from "../models/MovieList";
+import { MovieDetailRequest, QueryMovieRequest } from "../models/MovieList";
 
 export const MovieApi = () => {
   const defaultLang = "en-US";
@@ -41,9 +41,26 @@ export const MovieApi = () => {
       }
     );
   };
+  
+  const getMovieDetail = async (requestParams: MovieDetailRequest) => {
+    const requestParamURI = requestParams.id;
+    const languageURI = `language=${requestParams.language ?? defaultLang}`;
+
+    return await fetch(
+      `${MOVIE_SERVICE_URL}/${requestParamURI}?${languageURI}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          AUTHORIZATION: "Bearer " + MOVIE_SERVICE_ACCESS_TOKEN,
+        },
+      }
+    );
+  };
 
   return {
     getNowPlayingMovies: getNowPlayingMovies,
     getTopRatedMovies: getTopRatedMovies,
+    getMovieDetail: getMovieDetail,
   };
 };
