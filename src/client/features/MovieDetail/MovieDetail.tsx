@@ -16,8 +16,27 @@ export const MovieDetail = () => {
 
   return (
     <div className={styles.container}>
-      <img src={getImageURL(movieDetail?.backdrop_path ?? "")} alt="" />
+      <div>
+        <img
+          src={getImageURL("original", movieDetail?.backdrop_path ?? "")}
+          loading="lazy"
+          alt=""
+        />
+      </div>
       {movieDetail?.title}
+      <div>
+        <p>{movieDetail?.budget}</p>
+        <p>{movieDetail?.homepage}</p>
+        <p>{movieDetail?.status}</p>
+        <p>{movieDetail?.vote_average}</p>
+        <p>{movieDetail?.vote_count}</p>
+        <p>{movieDetail?.revenue}</p>
+        <p>{movieDetail?.genres[0].name}</p>
+        <p>{movieDetail?.genres[1].name}</p>
+        <p>{movieDetail?.overview}</p>
+        <p>{movieDetail?.original_title}</p>
+        <p>{movieDetail?.original_language}</p>
+      </div>
     </div>
   );
 };

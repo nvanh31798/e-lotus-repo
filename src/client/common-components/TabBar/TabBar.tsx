@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Path } from "../../routes/Path";
 import styles from "./style.module.scss";
 
 export const TabBar = () => {
-
-
+  const { pathname } = useLocation();
   const movieMenuOptions = [
     {
       title: "Now Playing Movie",
@@ -17,21 +16,27 @@ export const TabBar = () => {
   ];
 
   return (
-    <div className={styles.container}>
-      <nav>
-        <ul>
-          <li className={styles.dropDown}>
-            Movie
-          </li>
-            <div className={styles.dropDownMenu}>
-              {movieMenuOptions.map((option) => (
-                <button>
-                  <Link className={styles.menuOption} to={option.path}>{option.title}</Link>
-                </button>
-              ))}
-            </div>
-        </ul>
-      </nav>
+    <div className={styles.dropDownMenu}>
+      {movieMenuOptions.map((option) => (
+        <div
+          className={
+            `/${option.path}` === pathname
+              ? styles.activatedButton
+              : styles.optionContainer
+          }
+        >
+          <Link
+            className={
+              `/${option.path}` === pathname
+                ? styles.activatedText
+                : styles.menuOption
+            }
+            to={option.path}
+          >
+            {option.title}
+          </Link>
+        </div>
+      ))}
     </div>
   );
 };
